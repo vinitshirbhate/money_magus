@@ -77,7 +77,7 @@ const Login = () => {
             
             type={tooglePassword?"text":"password"}
             id="password"
-            className="w-full px-3 py-2 border-2 rounded-md focus:outline-none focus:border-blue-500 "
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500 "
             onChange={(e) => setPassword(e.target.value)}
           />
           <div className='flex flex-row justify-end' >
