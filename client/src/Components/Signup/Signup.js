@@ -22,12 +22,33 @@ const Signup = () => {
             }
         }
       const data={email,username,password}
-        try {
-           const response =  await axios.post('http://localhost:5000/signup',data,config);
-            console.log(response.data.msg);
-        } catch (error) {
-            
-        }
+      try{
+        const response = await axios.post("http://localhost:5000/signup",data,config)
+        window.alert(response.data.msg);
+        navigate("/dashboard");
+
+
+    //    .then(res=>{
+    //      if(res.data=="exists"){
+    //          alert("User already exists")
+    //     }
+    //     else if(res.data=="notexists"){
+    //          navigate("/dashboard")
+    //      }
+    //    })
+    //    .catch(error=>{
+    //      alert("wrong details")
+    //      console.log(error.response.data.msg)
+    //    })
+    //    }
+    //    catch(error){
+    //      console.log(error);
+       }
+       catch(error){
+
+        window.alert(error.response.data.msg);
+
+       }
     };
     
     return (

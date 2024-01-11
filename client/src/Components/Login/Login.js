@@ -10,7 +10,7 @@ import axios from 'axios'; // Import axios
 const Login = () => {
 
 
-    const navigate  = useNavigate();
+  const navigate  = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [tooglePassword, setTooglePassword] = useState(false);
@@ -21,22 +21,28 @@ const Login = () => {
         "content-type":"application/json"
       }
     }
+    const data={email,password}
 
-    const data = {
-      email,
-      password
-    }
     try{
-     const response = await axios.post("http://localhost:5000/login",data,config);
-     console.log(response.data.msg);
-    }
+     const response = await axios.post("http://localhost:5000/login",data,config)
+      navigate("/dashboard");
 
+    // .then(res=>{
+    //   if(res.data==="exists"){
+    //     navigate("/dashboard")
+    //   }
+    //   else if(res.data==="notexists"){
+    //     alert("You have not signed up yet")
+    //   }
+    // })
+    // .catch(error=>{
+    //   alert("wrong details")
+    //   console.log(error.response.data.msg)
+    // })
+    }
     catch(error){
-      console.log(error.response.data.msg)
+      window.alert(error.response.data.msg);
     }
-
-    
-  
   };
 
   return (
