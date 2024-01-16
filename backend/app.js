@@ -16,9 +16,7 @@ app.use(cors())
 //routes
 readdirSync('./routes').map((route) => app.use('/', require('./routes/' + route)))
 
-app.get("/login",cors(),(req,res)=>{
 
-})
 
 app.post("/login",async(req,res)=>{
     const{email,password}=req.body
@@ -28,7 +26,7 @@ app.post("/login",async(req,res)=>{
 
         if(check){
             if(password===check.password){
-                res.status(200).json({msg:"Login Sucessfull"});
+                res.status(200).json({msg:"Login Sucessfull", email: email });
             }else{
                 res.status(501).json({msg:"Enter Correct Password"});
             }
@@ -41,9 +39,12 @@ app.post("/login",async(req,res)=>{
     }
 })
 
-app.get("/signup",cors(),(req,res)=>{
 
-})
+
+
+
+
+
 app.post("/signup",async(req,res)=>{
     const{email,username,password}=req.body
 

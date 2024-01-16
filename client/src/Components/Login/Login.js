@@ -1,5 +1,5 @@
 // src/components/Login.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import img from "../../images/auth.jpg"
 import "../../App.css"
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
@@ -15,6 +15,17 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [tooglePassword, setTooglePassword] = useState(false);
 
+
+
+
+  useEffect(()=>{
+    console.log(localStorage.getItem("email"));
+    if(localStorage.getItem("email")){
+      navigate("/dashboard");
+    }
+
+  },[])
+
   const handleLogin = async () => {
     const config = {
       headers: {
@@ -24,21 +35,12 @@ const Login = () => {
     const data={email,password}
 
     try{
-     const response = await axios.post("http://localhost:5000/login",data,config)
+     const response = await axios.post("http://localhost:5000/login",data,config);
+     localStorage.setItem("email",response.data.email);
+     
+
       navigate("/dashboard");
 
-    // .then(res=>{
-    //   if(res.data==="exists"){
-    //     navigate("/dashboard")
-    //   }
-    //   else if(res.data==="notexists"){
-    //     alert("You have not signed up yet")
-    //   }
-    // })
-    // .catch(error=>{
-    //   alert("wrong details")
-    //   console.log(error.response.data.msg)
-    // })
     }
     catch(error){
       window.alert(error.response.data.msg);

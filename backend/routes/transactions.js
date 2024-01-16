@@ -2,7 +2,7 @@ const { addAsset, deleteAsset, getAssets } = require('../controllers/asset');
 const { addExpense, getExpenses, deleteExpense } = require('../controllers/expense');
 const { addIncome, getIncomes, deleteIncome } = require('../controllers/income');
 const { addLiability, getLiabilities, deleteLiability } = require('../controllers/liability');
-
+const getValuesController = require("../controllers/getValuesController")
 const router = require('express').Router();
 
 
@@ -18,6 +18,8 @@ router.delete('/delete-asset/:id',deleteAsset)
 router.post('/add-liability',addLiability)
 router.get('/get-liabilities',getLiabilities)
 router.delete('/delete-liability/:id',deleteLiability)
+router.get("/getValues",getValuesController);
+
 
 
 

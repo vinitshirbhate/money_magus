@@ -25,7 +25,12 @@ export const Main = () => {
 
                     <Button onClick={()=>{navigate("/dataAnalysis")}}>Data Analysis</Button>
                 </div>
-                <Button variant="contained" style={{ marginBottom: "20px", backgroundColor: "white", color: "black" }}> Logout</Button>
+                <Button onClick={
+                    ()=>{
+                        localStorage.removeItem("email");
+                        navigate("/login")
+                    }
+                } variant="contained" style={{ marginBottom: "20px", backgroundColor: "white", color: "black" }}> Logout</Button>
 
             </div>
 

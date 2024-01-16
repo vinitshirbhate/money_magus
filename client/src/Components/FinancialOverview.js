@@ -7,6 +7,8 @@ import axios from "axios";
 
 export const FinancialOverview = () => {
 
+    const email= localStorage.getItem("email");
+
     const assetDefaultValues = {
         title: "",
         amount: "",
@@ -53,7 +55,7 @@ export const FinancialOverview = () => {
     }
 
     async function saveIncome() {
-        incomeData.email = "xyz"
+        incomeData.email = email
 
         try {
             const config = {
@@ -71,7 +73,7 @@ export const FinancialOverview = () => {
     }
 
     async function saveExpense(){
-        expenseData.email="xyz"
+        expenseData.email=email
         console.log(expenseData);
         try {
             const config = {
@@ -88,7 +90,7 @@ export const FinancialOverview = () => {
 
     }
         async function saveLiability(){
-            liabilityData.email="xyz"
+            liabilityData.email=email
             console.log(liabilityData);
             try {
                 const config = {
@@ -108,7 +110,7 @@ export const FinancialOverview = () => {
 
 
     async function saveAsset(){
-        assetData.email="xyz"
+        assetData.email=email
         console.log(assetData);
         try {
             const config = {
