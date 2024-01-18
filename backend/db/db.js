@@ -3,8 +3,8 @@ const mongoose=require('mongoose');
 
 const db=async()=>{
     try {
-        mongoose.set('strictQuery',false)
-        await mongoose.connect(process.env.MONGO_URL)
+    
+        await mongoose.connect( "mongodb+srv://vinitshirbhate:shivanipatil@moneymagus.dduylmh.mongodb.net/")
         console.log('DB Connected successfully');
     } catch (error) {
         console.log('DB Connection error');

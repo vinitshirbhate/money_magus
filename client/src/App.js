@@ -6,6 +6,7 @@ import { FinancialOverview } from './Components/FinancialOverview';
 import { DataAnalysis } from './Components/DataAnalysis';
 import Login from './Components/Login/Login';
 import Signup from './Components/Signup/Signup';
+import ChatBot from './Components/ChatBot';
 
 function App() {
   return (
@@ -19,10 +20,8 @@ function App() {
           <Route path='/financial' element={<FinancialOverview />}></Route>
           <Route path='/dataAnalysis' element={<DataAnalysis />}></Route>
         </Route>
-
       </Routes>
-
-
+      <ChatBot className="ChatBotButton" />
     </div>
   );
 }
