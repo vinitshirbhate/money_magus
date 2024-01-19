@@ -5,12 +5,16 @@ import WalletIcon from "@mui/icons-material/Wallet";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { PieChart } from "react-minimal-pie-chart";
-import { Pie } from 'react-chartjs-2';
+import { Bar, Line, Pie } from 'react-chartjs-2';
+import Chart from 'chart.js/auto';
+
 
 export const DataAnalysis = () => {
+
   const navigate = useNavigate();
   const [values, setValues] = useState({});
+  const [graphDataDB, setGraphData] = useState({});
+ 
 
   useEffect(() => {
     console.log(localStorage.getItem("email"));
@@ -24,8 +28,12 @@ export const DataAnalysis = () => {
           const response = await axios.get(
             `http://localhost:5000/getValues?email=${email}`
           );
-          console.log("data", response.data.values);
+          // console.log("data", response.data.values,response.data.userData);
           setValues(response.data.values);
+          setGraphData(response.data.graphData);
+        console.log(response.data.graphData);
+       
+
         } catch (e) {
           window.alert(`${e.response.msg}`);
         }
@@ -35,7 +43,39 @@ export const DataAnalysis = () => {
     }
   }, []);
 
+  function graphGenerator(){
+    return(
+      <div className="graph-container m-4 rounded-lg min-w-full flex bg-white flex-col sm:flex-col md:flex-col  lg:flex-row items-center justify-center gap-10">
+       <div className="bar-graph  bg-white p-10" > <Bar  data={{
+    labels: ['Income', 'Assets', 'Liabilities','Expenses'],
+    datasets: [
+      {
+        id: 1,
+        label: 'Amount',
+        data: [values.incomeSum, values.assetSum, values.liabilitySum,values.expenseSum],
+      },
+      
+    ],
+  }} /></div>
+       <div className="bar-graph bg-white p-10" > <Pie  data={{
+    labels: ['Assets', 'Liabilities','Expenses'],
+    datasets: [
+      {
+        id: 1,
+        label: 'Percentage',
+        data: [(values.assetSum/values.incomeSum)*100, (values.liabilitySum/values.incomeSum)*100,(values.expenseSum/values.incomeSum)*100],
+      },
+      
+    ],
+  }} /></div>
+      
+
+      </div>
+    )
+  }
+
   return (
+    <>
     <div className="flex flex-col justify-start items-center dashboard gap-12">
       <div className="grid gap-12 md:grid-cols-4 place-items-center grid-auto-flow:row mt-8 ">
         <div className=" bg-blue-400 px-8 py-4 md:py-8 md:px-12 text-center  rounded-lg analysis-item">
@@ -91,13 +131,11 @@ export const DataAnalysis = () => {
         </div>
       </div>
 
-      <div className="graph max-w-80">
-       
 
-
-        
-        
-      </div>
+      {graphDataDB.length!=0  ? graphGenerator()   : ""}
+     
     </div>
+   
+    </>
   );
 };

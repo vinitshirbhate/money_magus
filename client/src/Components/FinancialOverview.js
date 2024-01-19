@@ -9,6 +9,7 @@ export const FinancialOverview = () => {
 
     const email= localStorage.getItem("email");
 
+
     const assetDefaultValues = {
         title: "",
         amount: "",
