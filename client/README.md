@@ -68,3 +68,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+<
+ 
+    <div class="chatBotContainer">
+    <script src="website.js"></script>
+    <!-- <script src="//code.tidio.co/hgkamlha4wpqym2ofmvsri84f0x1brto.js" async></script> -->
+    <script type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
+    <zapier-interfaces-page-embed id="chatbotContainer" page-id='cloblcdn40016mc0o54gt9q4a' no-background='false' style='dipslay:none;transform: scale(0);max-width: 900px; height: 500px;'></zapier-interfaces-page-embed><script type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
+    <button onclick="handleChatBot()" id="actionBtn">ChatBot</button>
+    </div>

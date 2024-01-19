@@ -39,15 +39,15 @@ const Signup = () => {
 
             <div className='login-container'>
 
-                <div className='login-img'  >
+                <div className='login-img ' >
 
-                    <img src={img} alt="" />
+                    <img src={img} alt="" className='image object-cover h-full w-full' />
                 </div>
 
 
                 <div className="login-form">
 
-                    <h1 className="text-2xl md:text-4xl text-center text-blue-800 uppercase font-bold tracking-wider	 mb-6 text-black">Register</h1>
+                    <h1 className="text-2xl md:text-4xl text-center text-blue-800 uppercase font-bold tracking-wider mb-6 text-black ">Register</h1>
 
                     <div className="mb-4">
                         <label htmlFor="username" className=" text-gray-600 text-sm font-medium mb-2">
@@ -81,7 +81,7 @@ const Signup = () => {
 
                             type={tooglePassword ? "text" : "password"}
                             id="password"
-                            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500 "
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         <div className='flex flex-row justify-end' >
