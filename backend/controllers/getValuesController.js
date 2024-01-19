@@ -17,10 +17,38 @@ const getValuesController = async (req,res)=>{
         var expenseSum = getSum(expense);
         var liabilitySum = getSum(liability);
        
+        const userData = [
+            {
+                title:"Income",
+                value:incomeSum,
+            },
+            {
+                title:"Assets",
+                value:assetSum,
+            },
+            {
+                title:"Liability",
+                value:liabilitySum,
+            },
+            {
+                title:"Expenses",
+                value:expenseSum,
+            }
+        ]
+
+        const graphData = {
+            labels : userData.map(item=> item.title),
+            datasets : [
+                {
+                    labels:"Amount",
+                    data:userData.map(item=> item.value),
+                }
+            ]
+        }
 
         res.status(200).json({values:{
             assetSum,incomeSum,expenseSum,liabilitySum
-        }})
+        },userData,graphData})
         
     }
     
